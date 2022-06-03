@@ -1,7 +1,14 @@
 declare module "@meedwire/uni-orm" {
   export type ITable = { [K: string]: Function };
 
+  export interface IDatabaseProvider {}
+
+  export function sqliteProvider(): IDatabaseProvider {}
+
+  export function watermellonProvider(): IDatabaseProvider {}
+
   export interface IInitializerOptions<T extends ITable> {
+    databaseProvider: IDatabaseProvider;
     entities: T;
   }
 
